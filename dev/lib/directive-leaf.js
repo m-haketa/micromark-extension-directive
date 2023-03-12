@@ -31,7 +31,7 @@ function tokenizeDirectiveLeaf(effects, ok, nok) {
 
   /** @type {State} */
   function start(code) {
-    assert(code === codes.colon, 'expected `:`')
+    assert(code === codes.atSign, 'expected `@`')
     effects.enter('directiveLeaf')
     effects.enter('directiveLeafSequence')
     effects.consume(code)
@@ -40,7 +40,7 @@ function tokenizeDirectiveLeaf(effects, ok, nok) {
 
   /** @type {State} */
   function inStart(code) {
-    if (code === codes.colon) {
+    if (code === codes.atSign) {
       effects.consume(code)
       effects.exit('directiveLeafSequence')
       return factoryName.call(
